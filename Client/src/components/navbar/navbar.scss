@@ -1,0 +1,159 @@
+@import "../../style.scss";
+
+.navbar {
+	@include themify($themes) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 10px 20px;
+		height: 60px;
+		border-bottom: 1px solid themed("border");
+		position: sticky;
+		top: 0;
+		background-color: themed("bg");
+		color: themed("logo");
+		z-index: 999;
+
+		.left {
+			display: flex;
+			align-items: center;
+			gap: 30px;
+			height: 60px;
+
+			span {
+				font-weight: 1000;
+				font-size: 35px;
+				color: themed("textColor");
+				margin-left: 30px;
+			}
+
+			.search {
+				display: flex;
+				align-items: center;
+				gap: 20px;
+				background-color: themed("bgSoft");
+				border-radius: 20px;
+				padding: 5px 30px;
+				margin-left: 40px;
+				height: 30px;
+				// width: 100%;
+
+				input {
+					border: none;
+					width: 500px;
+					background-color: transparent;
+					color: themed("textColor");
+					padding: 2px 10px;
+					border-radius: 5px;
+
+					@include mobile {
+						display: none;
+					}
+
+					@include tablet {
+						width: 200px;
+					}
+				}
+				input:focus {
+					outline: none;
+				}
+			}
+		}
+
+		.right {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+
+			.icons {
+				margin: 0px 10px;
+				color: themed("logo");
+			}
+
+			@include mobile {
+				display: none;
+			}
+			.button {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				border: none;
+				padding: 7px 20px;
+				cursor: pointer;
+				background-color: themed("buttonBg");
+				color: themed("bg");
+				font-size: 20px;
+				border-radius: 5%;
+			}
+			.user {
+				display: flex;
+				align-items: center;
+				gap: 20px;
+				font-weight: 500;
+
+				@include tablet {
+					display: none;
+				}
+
+				img {
+					width: 30px;
+					height: 30px;
+					border-radius: 50%;
+					object-fit: cover;
+				}
+			}
+		}
+		.arrow {
+			display: inline-block;
+			margin-left: 5px;
+			transition: transform 0.3s;
+		}
+
+		.open {
+			transform: rotate(180deg);
+		}
+
+		.dropdown {
+			margin-left: 10px;
+			position: relative;
+			display: inline-block;
+		}
+
+		.dropdown-toggle {
+			background-color: themed("bgSoft");
+			color: themed("textColor");
+			width: 250px;
+			font-size: 15px;
+			font-weight: 500;
+			border: none;
+			padding: 15px 15px;
+			border-top-left-radius: 10px;
+			border-top-right-radius: 10px;
+			cursor: pointer;
+		}
+
+		.dropdown-menu {
+			position: absolute;
+			top: 100%;
+			width: 250px;
+			right: 0;
+			background-color: themed("bg");
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+
+		.menu-item {
+			padding: 15px 15px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.menu-item:last-child {
+			border-bottom: none;
+		}
+
+		.menu-item:hover {
+			background-color: themed("bgSoft");
+		}
+	}
+}

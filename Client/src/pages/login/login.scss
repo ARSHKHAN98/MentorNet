@@ -1,0 +1,79 @@
+@import "../../style.scss";
+
+.login {
+	@include themify($themes) {
+		height: 100vh;
+		background-color: themed("bgSoft");
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.card {
+			width: 50%;
+			display: flex;
+			flex-direction: row-reverse;
+			background-color: themed("bg");
+			border-radius: 10px;
+			min-height: 600px;
+			overflow: hidden;
+			margin-bottom: 50px;
+
+			.right {
+				flex: 1;
+				padding: 50px;
+				display: flex;
+				flex-direction: column;
+				gap: 50px;
+				justify-content: center;
+
+				h1 {
+					color: themed("textColorSoft");
+					font-size: 50px;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+
+				form {
+					display: flex;
+					flex-direction: column;
+					gap: 30px;
+
+					input {
+						border: none;
+						border-bottom: 1px solid themed("border");
+						padding: 20px 10px;
+						background-color: themed("bg");
+					}
+
+					button {
+						width: 100%;
+						padding: 10px;
+						border-radius: 10px;
+						border: none;
+						background-color: themed("logo");
+						color: themed("bg");
+						font-weight: bold;
+						font-size: 20px;
+						cursor: pointer;
+					}
+					.registercheck {
+						margin-left: 10px;
+						color: themed("textColorSoft");
+					}
+
+					.link {
+						text-decoration: none;
+						padding: 0 20px;
+						font-weight: bold;
+						color: themed("logo");
+					}
+
+					.error {
+						color: red;
+					}
+				}
+			}
+		}
+	}
+}

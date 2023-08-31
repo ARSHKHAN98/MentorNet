@@ -1,0 +1,112 @@
+@import "../../style.scss";
+
+.wrapper {
+	@include themify($themes) {
+		-webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+		-moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+		box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+		border-radius: 20px;
+		background-color: themed("bg");
+		color: themed("textColor");
+		width: 80%;
+		padding: 20px;
+		display: flex;
+		align-items: center;
+		margin-top: 20px;
+
+		.card {
+			// padding: 20px;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+
+			.header {
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+				margin: 10px 0;
+
+				.left {
+					flex: 3;
+					display: flex;
+					align-items: center;
+					text-decoration: none;
+
+					.name {
+						font-size: 25px;
+						font-weight: bold;
+						color: themed("textColorSoft");
+					}
+
+					img {
+						width: 75px;
+						height: auto;
+						border-radius: 50%;
+						margin: 0 50px;
+					}
+				}
+
+				.right {
+					flex: 1;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+
+					.button {
+						width: 70%;
+						padding: 10px;
+						border-radius: 10px;
+						border: none;
+						background-color: themed("buttonBg");
+						color: themed("bg");
+						font-weight: bold;
+						font-size: 15px;
+						cursor: pointer;
+					}
+				}
+			}
+
+			.body {
+				display: flex;
+				flex-direction: column;
+				// align-items: center;
+				justify-content: center;
+				.resume {
+					padding: 20px 0;
+					display: flex;
+					justify-content: center;
+				}
+				.buttons {
+					display: flex;
+					justify-content: space-around;
+					.subbody {
+						display: flex;
+						flex-direction: column;
+					}
+					.accept {
+						width: 40%;
+						padding: 10px;
+						border-radius: 10px;
+						border: none;
+						background-color: rgb(52, 118, 52);
+						color: whitesmoke;
+						font-weight: bold;
+						font-size: 15px;
+						cursor: pointer;
+					}
+					.reject {
+						width: 40%;
+						padding: 10px;
+						border-radius: 10px;
+						border: none;
+						background-color: rgb(245, 81, 81);
+						color: whitesmoke;
+						font-weight: bold;
+						font-size: 15px;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+}
