@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Request from "../../components/request/Request";
-import "./requests.scss";
+import ProfileCard from "../../components/profileCard/ProfileCard";
+import "./referrals.scss";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Referral from "../../components/referral/Referral";
 
 const Requests = () => {
 	const [requests, setRequests] = useState();
@@ -16,14 +17,10 @@ const Requests = () => {
 		func();
 	}, []);
 
-	const handleChange = (requestID) => {
-		setRequests(requests.filter((request) => request._id !== requestID));
-	};
-
 	return (
 		<div className="containerr">
 			<div className="body">
-				<div className="requests">{requests && requests.map((request) => request.receiverID === user._id && request.status === "Pending" && <Request handleChange={handleChange} request={request} key={request._id} />)}</div>
+				<div className="requests">{requests && requests.map((request) => request.senderID === user._id && <Referral request={request} key={request._id} />)}</div>{" "}
 			</div>
 		</div>
 	);

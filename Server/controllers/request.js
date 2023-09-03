@@ -12,9 +12,8 @@ export const getRequest = async (req, res) => {
 
 export const updateRequest = async (req, res) => {
 	const { id } = req.params;
-	const { status } = req.body;
 	try {
-		const updatedRequest = await request.findByIdAndUpdate(id, { status: status });
+		const updatedRequest = await request.findByIdAndUpdate(id, { status: req.body.status }, { new: true });
 		res.status(200).json(updatedRequest);
 	} catch (er) {
 		res.status(500).json({ message: er.message });
@@ -25,9 +24,8 @@ export const createRequest = async (req, res) => {
 	const { _id } = req.user;
 	const { user: u } = req;
 	const { receiverID, postID } = req.body;
-	console.log(u);
 	try {
-		const findExisting = await request.findOne({ senderID: _id, receiverID, postID });
+		const findExisting = await request.findOne({ senderID: _id, receiverID, postID, status: "Pending" });
 		if (findExisting) {
 			res.status(400).send("Already Requested");
 		} else {

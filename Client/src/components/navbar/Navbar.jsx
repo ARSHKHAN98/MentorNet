@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth, setUser } from "../../store/authSlice";
 import { MdOutlinePendingActions } from "react-icons/md";
+import { BsHourglassBottom } from "react-icons/bs";
 import axios from "axios";
 
 const Navbar = () => {
@@ -49,8 +50,11 @@ const Navbar = () => {
 				</div>
 			</div>
 			<div className="right">
-				<Link to="/requests" className="icons">
+				<Link to="/referrals" className="icons">
 					<MdOutlinePendingActions size={25} />
+				</Link>
+				<Link to="/requests" className="icons">
+					<BsHourglassBottom size={25} />
 				</Link>
 				{darkMode ? <WbSunnyOutlinedIcon onClick={toggle} className="icons" /> : <DarkModeOutlinedIcon onClick={toggle} className="icons" />}
 				<div className="logout">

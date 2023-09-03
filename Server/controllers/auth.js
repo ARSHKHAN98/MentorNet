@@ -37,13 +37,14 @@ export const login = async (req, res) => {
 
 		if (!isPasswordCorrect) return res.status(404).json({ message: "Invalid credentials" });
 
-		const token = jwt.sign({ user: existingUser }, process.env.TOKEN_SECRET, { expiresIn: "1d" });
+		const { password, profilepic, ...others } = existingUser._doc;
 
-		const { password, ...others } = existingUser._doc;
+		const token = jwt.sign({ user: others }, process.env.TOKEN_SECRET, { expiresIn: "1d" });
 
 		res.cookie("accessToken", token, {
 			httpOnly: true,
 		});
+		// console.log(req.headers);
 		res.status(200).json(others);
 	} catch (error) {
 		res.status(500).json({ message: error.message });
@@ -51,6 +52,7 @@ export const login = async (req, res) => {
 };
 
 export const logout = (req, res) => {
+	// localStorage.clear();
 	res.clearCookie("accessToken", {
 		secure: true,
 		sameSite: "none",

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Update from "../../components/update/Update";
 import { useLocation } from "react-router-dom";
+import ProfileCard from "../../components/profileCard/ProfileCard";
 
 const Profile = () => {
 	const [openupdate, setOpenupdate] = useState(false);
@@ -19,19 +20,15 @@ const Profile = () => {
 	}, []);
 
 	return (
-		<div className="profile">
-			<div className="images">
-				<img src={user.profilepic} alt="" className="profilePic" />
+		<div className="upper">
+			<div className="card">
+				<ProfileCard userID={userID} />
 			</div>
-			<div className="profileContainer">
-				<div className="uInfo">
-					<div className="center">
-						<span>{user.name}</span>
-						<div className="info"></div>
-					</div>
+			<div className="profile" style={{ flex: 3 }}>
+				<div className="profileContainer">
+					{openupdate && <Update setOpenupdate={setOpenupdate} user={user} />}
+					<Posts userID={userID} />
 				</div>
-				{openupdate && <Update setOpenupdate={setOpenupdate} user={user} />}
-				<Posts userID={userID} />
 			</div>
 		</div>
 	);
