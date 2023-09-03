@@ -49,6 +49,14 @@ const Update = ({ setOpenupdate, user }) => {
 					<CloseIcon className="close" onClick={() => setOpenupdate(false)} />
 				</div>
 				<form>
+					<input type="text" placeholder="Name" name="name" onChange={handleChange} />
+					<input type="text" placeholder="Linkedin Handle" name="linkedin" onChange={handleChange} />
+					<input type="text" placeholder="Github Handle" name="github" onChange={handleChange} />
+					<input type="text" placeholder="Resume" name="resume" onChange={handleChange} />
+					<input type="number" placeholder="Graduation Year" name="YOP" onChange={handleChange} />
+					{passout && <input type="text" placeholder="Branch" name="branch" onChange={handleChange} />}
+					{!passout && <input type="text" placeholder="Role" name="role" onChange={handleChange} />}
+					{!passout && <input type="text" placeholder="Current Company" name="Current Company" onChange={handleChange} />}
 					<div className="files">
 						<label htmlFor="profile">
 							<div className="imgContainer imgg">
@@ -58,14 +66,6 @@ const Update = ({ setOpenupdate, user }) => {
 							<FileBase type="file" multiple={false} onDone={({ base64 }) => setProfile(base64)} />
 						</label>
 					</div>
-					<input type="text" placeholder="Name" name="name" onChange={handleChange} />
-					<input type="text" placeholder="Linkedin Handle" name="linkedin" onChange={handleChange} />
-					<input type="text" placeholder="Github Handle" name="github" onChange={handleChange} />
-					<input type="text" placeholder="Resume" name="resume" onChange={handleChange} />
-					<input type="number" placeholder="Graduation Year" name="YOP" onChange={handleChange} />
-					{passout && <input type="text" placeholder="Branch" name="branch" onChange={handleChange} />}
-					{!passout && <input type="text" placeholder="Role" name="role" onChange={handleChange} />}
-					{!passout && <input type="text" placeholder="Current Company" name="Current Company" onChange={handleChange} />}
 					<button onClick={handleClick}>Update</button>
 				</form>
 			</div>
