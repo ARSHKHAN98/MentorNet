@@ -13,12 +13,12 @@ const Posts = ({ userID }) => {
 		const fun = async () => {
 			const res = await axios.get("http://localhost:8800/api/posts", { withCredentials: true });
 			setPosts(res.data);
-			setPosts(posts.filter((post) => !user.applied.includes(post._id)));
 		};
 		fun();
 	}, []);
+	console.log(posts.map((post) => !user.applied.includes(post._id)));
 
-	return <div className="posts">{userID ? posts.map((post) => post.userID === userID && user.applied.includes(post._id) && <Post key={post._id} post={post} />) : posts.map((post) => post.userID !== user._id && <Post key={post._id} post={post} />)}</div>;
+	return <div className="posts">{userID ? posts.map((post) => post.userID === userID && !user.applied.includes(post._id) && <Post key={post._id} post={post} />) : posts.map((post) => post.userID !== user._id && !user.applied.includes(post._id) && <Post key={post._id} post={post} />)}</div>;
 };
 
 export default Posts;

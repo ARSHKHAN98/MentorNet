@@ -31,7 +31,7 @@ export const createRequest = async (req, res) => {
 		} else {
 			const newRequest = await request.create({ senderID: _id, receiverID, postID, resume: u.resume, YOP: u.YOP });
 			const requestingUser = await user.findOne({ _id });
-			requestingUser.applied.push(newRequest._id);
+			requestingUser.applied.push(postID);
 			requestingUser.save();
 			res.status(200).send({ newRequest });
 		}

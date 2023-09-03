@@ -3,10 +3,13 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { PostContext } from "../../context/postContext";
+// import { useDispatch } from "react-redux";
+// import { setUser } from "../../store/authSlice";
 
 const Post = ({ post }) => {
 	const [profilepic, setProfilepic] = useState();
 	const { posts, setPosts } = useContext(PostContext);
+	// const dispatch = useDispatch();
 
 	useEffect(() => {
 		const fun = async () => {
@@ -19,7 +22,8 @@ const Post = ({ post }) => {
 	const handleApply = async (e) => {
 		e.preventDefault();
 		try {
-			const req = await axios.post("http://localhost:8800/api/requests", { receiverID: post.userID, postID: post._id }, { withCredentials: true });
+			await axios.post("http://localhost:8800/api/requests", { receiverID: post.userID, postID: post._id }, { withCredentials: true });
+			// setUser()
 			setPosts(posts.filter((pt) => pt._id !== post._id));
 		} catch (err) {
 			console.log(err.message);
