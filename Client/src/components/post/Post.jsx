@@ -3,12 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { PostContext } from "../../context/postContext";
+import { useSelector } from "react-redux";
 // import { useDispatch } from "react-redux";
 // import { setUser } from "../../store/authSlice";
 
 const Post = ({ post }) => {
 	const [profilepic, setProfilepic] = useState();
 	const { posts, setPosts } = useContext(PostContext);
+	const { user } = useSelector((state) => state.auth);
 	// const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -44,9 +46,11 @@ const Post = ({ post }) => {
 						</div>
 					</div>
 					<div className="right">
-						<button className="button" onClick={handleApply}>
-							Apply
-						</button>
+						{user._id !== post.userID && (
+							<button className="button" onClick={handleApply}>
+								Apply
+							</button>
+						)}
 					</div>
 				</div>
 				<div className="body">

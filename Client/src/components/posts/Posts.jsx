@@ -16,7 +16,6 @@ const Posts = ({ userID }) => {
 		};
 		fun();
 	}, []);
-	console.log(posts.map((post) => !user.applied.includes(post._id)));
 
 	return <div className="posts">{userID ? posts.map((post) => post.userID === userID && !user.applied.includes(post._id) && <Post key={post._id} post={post} />) : posts.map((post) => post.userID !== user._id && !user.applied.includes(post._id) && <Post key={post._id} post={post} />)}</div>;
 };
